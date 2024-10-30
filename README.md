@@ -28,8 +28,10 @@ An Employee Management System built with Angular, providing tools for managing e
 
 ## Screenshots
 
-![Dashboard](images/dashboard-screenshot.png)
-*Example of the dashboard overview screen.*
+[Dashboard] *Example of the dashboard overview screen.*
+
+<a href="https://ibb.co/nrKgyFB"><img src="https://i.ibb.co/JnSBT9q/github-dashboard.png" alt="github-dashboard" border="0" /></a>
+
 
 ## Installation
 
