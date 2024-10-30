@@ -59,5 +59,54 @@ An Employee Management System built with Angular, providing tools for managing e
 
    
   Visit http://localhost:4209 to view the app in your browser.
-   
-  
+
+## Usage
+
+- **Dashboard**: View an overview of employees, recent hires, and current projects.
+- **Manage Leaves**: Approve, reject, or track the status of employee leave requests.
+- **Employee Profiles**: View detailed information about each employee, including contact and department information.
+
+## API Documentation
+
+The project relies on an API that provides data for employees, leave requests, and projects. API endpoints are defined in the `MasterService`.
+
+### Example Endpoints
+
+- **Get Dashboard Data**: `/api/dashboard`
+- **Get Employee List**: `/api/employees`
+- **Get Leave Requests**: `/api/leaves`
+
+For detailed information, see the API documentation in the `services/master.service.ts` file.
+
+## Contributing
+
+Contributions are welcome! Please follow these steps:
+
+1. Fork the repository.
+2. Create a new branch (`git checkout -b feature-branch`).
+3. Commit your changes (`git commit -m 'Add some feature'`).
+4. Push to the branch (`git push origin feature-branch`).
+5. Open a pull request.
+
+Please ensure your code follows the style guidelines and is well-documented.
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## Project Structure
+
+```ruby
+src
+├── app
+│   ├── components        # Core UI components
+│   ├── services          # API and business logic services
+│   ├── models            # Data models and interfaces
+│   ├── pages             # Page components (Dashboard, Employee Management, etc.)
+│   ├── app-routing.module.ts
+│   └── app.component.ts
+├── assets                # Static files and images
+├── environments          # Environment configurations
+└── main.ts               # Angular entry point
+
+
