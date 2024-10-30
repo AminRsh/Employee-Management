@@ -1,27 +1,63 @@
-# LeaveManagment
+# Employee Management System
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.2.
+![Employee Management System](https://img.shields.io/badge/Angular-16-blue) ![Status](https://img.shields.io/badge/Status-Active-green) ![License](https://img.shields.io/badge/License-MIT-orange)
 
-## Development server
+An Employee Management System built with Angular, providing tools for managing employee data, leave requests, and projects. The app is designed to be user-friendly, with features to streamline HR management, record-keeping, and reporting.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## Table of Contents
 
-## Code scaffolding
+- [Features](#features)
+- [Screenshots](#screenshots)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Project Structure](#project-structure)
+- [API Documentation](#api-documentation)
+- [Contributing](#contributing)
+- [License](#license)
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+---
 
-## Build
+## Features
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+- **Employee Dashboard**: Overview of employee statistics and recent activity.
+- **Leave Management**: Track leave requests, including types, status, and totals.
+- **Project Management**: Display and track recent projects and employees involved.
+- **Responsive UI**: Optimized for both desktop and mobile views.
+- **Real-time Updates**: Dynamic data binding with Angular’s reactivity features.
+- **Secure Access**: Authentication for managing data (future enhancement).
 
-## Running unit tests
+## Screenshots
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+![Dashboard](images/dashboard-screenshot.png)
+*Example of the dashboard overview screen.*
 
-## Running end-to-end tests
+## Installation
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+1. **Clone the repository**
+   
+   ```bash
+   git clone https://github.com/AminRsh/Employee-Management.git
+   cd Employee-Management
 
-## Further help
+3. **Install dependencies** Ensure you have Node.js installed, then run:
+   
+   ```bash
+   npm install
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+4. **Set up environment variables**Configure your API endpoints in environment.ts and environment.prod.ts:
+   
+   ```bash
+   export const environment = {
+   production: false,
+   apiUrl: 'https://your-api-url.com/api'
+   };
+
+5. **Run the application** Start the Angular server:
+   
+   ```bash
+   ng serve
+
+   
+  Visit http://localhost:4209 to view the app in your browser.
+   
+  
