@@ -1,0 +1,104 @@
+<div class="container my-4">
+    <h3>Dashboard</h3>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card text-white bg-primary mb-3">
+                <div class="card-header">Total Employees</div>
+                <div class="card-body">
+                    <p class="card-text" id="totalEmployees">{{dashboardObj.totalEmployee}}</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card text-white bg-success mb-3">
+                <div class="card-header">Total Leave</div>
+                <div class="card-body">
+                    <p class="card-text" id="totalProjects">{{ totalEarnedLeaves ()}}</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card text-white bg-warning mb-3">
+                <div class="card-header">New Leaves</div>
+                <div class="card-body">
+                    <p class="card-text" id="activeEmployees">{{newCount()}}</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card text-white bg-primary mb-3">
+                <div class="card-header">Approved Leaves</div>
+                <div class="card-body">
+                    <p class="card-text" id="activeEmployees">{{approvedCount()}}</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card text-white bg-success mb-3">
+                <div class="card-header">Canceled Leaves</div>
+                <div class="card-body">
+                    <p class="card-text" id="activeEmployees">0</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card text-white bg-secondary mb-3">
+                <div class="card-header">Earned Leaves</div>
+                <div class="card-body">
+                    <p class="card-text" id="activeEmployees">0</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+
+        @for (item of recentEmployeeList(); track $index) {
+        <div class="col-md-6">
+            <div class="card mb-3" [ngClass]="item.gender == 'Male' ? 'bg-primary text-white' : 'bg-danger text-white'">
+                <div class="card-header">Recent Employees</div>
+                <div class="card-body">
+                    <ul id="recentEmployees" class="list-group list-group-flush">
+                        <li class="list-group-item">Employee Name: {{item.employeeName || "--"}}</li>
+                        <li class="list-group-item">Contact No: {{item.contactNo || "--"}}</li>
+                        <li class="list-group-item">Email Id: {{item.emailId || "--"}}</li>
+                        <li class="list-group-item">Department Id: {{item.deptId || "--"}}</li>
+                        <li class="list-group-item">Gender: {{item.gender || "--"}}</li>
+                        <li class="list-group-item">Role: {{item.role || "--"}}</li>
+                        <li class="list-group-item">Join Date: {{ item.createdDate ? (item.createdDate | date: 'dd-MM-yy') : '--' }}</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        }
+
+        @for (item of recentProjects(); track $index) {
+        <div class="col-md-6">
+            <div class="card mb-3">
+                <div class="card-header">Recent Employees</div>
+                <div class="card-body">
+                    <ul id="recentEmployees" class="list-group list-group-flush">
+                        <li class="list-group-item">Project Name: {{item.projectName}}</li>
+                        <li class="list-group-item">Client No: {{item.clientName}}</li>
+                        <li class="list-group-item">Start Date: {{item.startDate | date: 'dd-MM-yy'}}</li>
+                        <li class="list-group-item">Contact Person: {{item.contactPerson}}</li>
+                        <li class="list-group-item">Contact No.: {{item.contactNo}}</li>
+                        <li class="list-group-item">Email: {{item.emailId}}</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        }
+    </div>
+</div>
+
+<style>
+    .card.bg-primary .list-group-item,
+    .card.bg-danger .list-group-item {
+        background-color: inherit;
+        color: inherit;
+        border: none;
+    }
+</style>

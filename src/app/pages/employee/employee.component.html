@@ -1,0 +1,157 @@
+<div class="container-fluid my-4">
+    <div class="row">
+        <div class="col-7">
+            <div class="card">
+                <div class="card-header bg-secondary">
+                    <div class="row">
+                        <div class="col-6 text-white">
+                            <strong>Employee Portal</strong>
+                        </div>
+                        <div class="col-6 text-end">
+                            <button class="btn btn-warning">Add New</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Serial No.</th>
+                                <th>Name</th>
+                                <th>Contact No</th>
+                                <th>Email</th>
+                                <th>Role</th>
+                                <th>Gender</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @for (item of employeeList; track $index) {
+                            <tr>
+                                <td>{{$index+1}}</td>
+                                <td>{{item.employeeName}}</td>
+                                <td>{{item.contactNo}}</td>
+                                <td>{{item.emailId}}</td>
+                                <td>{{item.role}}</td>
+                                <td>{{item.gender}}</td>
+                                <td>
+                                    <button type="button" class="btn btn-warning btn-sm me-2"
+                                        (click)="onEdit(item)">Edit</button>
+                                    <button type="button" class="btn btn-danger btn-sm"
+                                        (click)="onDelete(item.employeeId)">Delete</button>
+                                </td>
+                            </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="col-5">
+            <div class="card">
+                <div class="card-header bg-secondary">
+                    <div class="row">
+                        <div class="col-6 text-white">
+                            <strong>New Employee</strong>
+                        </div>
+                        <div class="col-6 text-end">
+                            <button class="btn btn-primary">Close</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <form class="mb-4">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label for="employeeName" class="form-label">Employee Name</label>
+                                <input type="text" name="employeeName" [(ngModel)]="employeeObj.employeeName"
+                                    class="form-control" id="employeeName" placeholder="Enter employee name">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="contactNo" class="form-label">Contact No</label>
+                                <input type="text" name="contactNo" [(ngModel)]="employeeObj.contactNo"
+                                    class="form-control" id="contactNo" placeholder="Enter contact number">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label for="emailId" class="form-label">Email</label>
+                                <input type="email" name="emailId" [(ngModel)]="employeeObj.emailId"
+                                    class="form-control" id="emailId" placeholder="Enter email">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="deptId" class="form-label">Parent Department</label>
+                                <select id="deptId" (change)="onDeptChange()" name="parentDeptId"
+                                    [(ngModel)]="parentDeptId" class="form-select">
+                                    <option selected>Select Department</option>
+                                    @for (item of parentDepartmentList; track $index) {
+                                    <option [value]="item.departmentId">{{item.departmentName}}</option>
+                                    }
+                                </select>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="deptId" class="form-label">Child Department</label>
+                                <select id="deptId" name="deptId" [(ngModel)]="employeeObj.deptId" class="form-select">
+                                    <option selected>Select department</option>
+                                    @for (item of childDepartmentList; track $index) {
+                                    <option [value]="item.childDeptId">{{item.departmentName}}</option>
+                                    }
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label for="password" class="form-label">Password</label>
+                                <input type="password" name="password" [(ngModel)]="employeeObj.password"
+                                    class="form-control" id="password" placeholder="Enter password">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="gender" class="form-label">Gender</label>
+                                <select id="gender" name="gender" [(ngModel)]="employeeObj.gender" class="form-select">
+                                    <option selected>Select gender</option>
+                                    <option value="Male">Male</option>
+                                    <option value="Female">Female</option>
+                                    <option value="Other">Other</option>
+                                </select>
+                            </div>
+                        </div>
+                        @if (employeeObj.employeeId == 0) {
+                        <button type="button" (click)="onSaveEmployee()" class="btn btn-warning mt-3">Save
+                            Employee</button>
+                        } @else {
+                        <button type="button" (click)="onUpdateEmployee()" class="btn btn-success mt-3">Update
+                            Employee</button>
+                        }
+                    </form>
+                </div>
+            </div>
+            <div class="card mt-4">
+                <div class="card-header bg-secondary">
+                    <div class="row">
+                        <div class="col-6 text-white">
+                            <strong>Add New Department</strong>
+                        </div>
+                    </div>
+                </div>
+                @if (masterSrv.loggedUserData.role == "Admin") {
+                <div class="card-body">
+                    <form class="mb-4">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label for="departmentName" class="form-label">Department Name</label>
+                                <input type="text" name="departmentName" [(ngModel)]="parentDepartmentObj.departmentName"
+                                    class="form-control" id="departmentName" placeholder="Enter department name">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="departmentLogo" class="form-label">Department Logo</label>
+                                <input type="text" name="departmentLogo" [(ngModel)]="parentDepartmentObj.departmentLogo"
+                                    class="form-control" id="departmentLogo" placeholder="Enter department logo">
+                            </div>
+                        </div>
+                        <button type="button" (click)="addNewDepartment()" class="btn btn-warning mt-3">Add Department</button>
+                    </form>
+                </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
